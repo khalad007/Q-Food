@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 const Register = () => {
 
@@ -124,7 +125,7 @@ const Register = () => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
+                            <button className="btn bg-[#3FCDA6]">Sign Up</button>
                         </div>
                     </form>
                     {
