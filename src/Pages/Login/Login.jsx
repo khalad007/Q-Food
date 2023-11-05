@@ -1,8 +1,62 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 
+    const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('');
+    const [success, setSuccess] = useState('');
+    const location = useLocation();
+
+    const navigate = useNavigate();
+
+
+    const auth = getAuth();
+    const handleGoogleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // Google Sign-In successful, you can handle the user creation or login here
+                const user = result.user;
+                console.log(user);
+                setSuccess(swal("Good job!", "Login Success.!", "success"))
+                navigate(location?.state ? location.state : '/');
+                // Redirect or handle the user state as needed
+            })
+            .catch((error) => {
+                // Handle Google Sign-In error
+                console.error(error);
+            });
+    };
+
+
+    const handleLogin = e => {
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                setSuccess(swal("Good job!", "Login Success.!", "success"))
+                e.target.reset();
+
+                navigate(location?.state ? location.state : '/');
+
+            })
+            .catch(error => {
+                console.error(error);
+                setLoginError(error.message);
+            })
+    }
 
     return (
         <div>
