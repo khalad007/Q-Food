@@ -1,8 +1,84 @@
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
 
+    const { createUser } = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
+    const [success, setSuccess] = useState('');
+
+
+    const auth = getAuth();
+    const handleGoogleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // Google Sign-In successful, you can handle the user creation or login here
+                const user = result.user;
+                console.log(user);
+                // Redirect or handle the user state as needed
+            })
+            .catch((error) => {
+                // Handle Google Sign-In error
+                console.error(error);
+            });
+    };
+
+
+
+
+    const handleRegister = e => {
+
+        e.preventDefault();
+        const form = e.target;
+
+        const displayName = form.displayName.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoURL = form.photoURL.value;
+
+        console.log(displayName, password, email, photoURL);
+
+        //reset success & error message 
+        setRegisterError('');
+        setSuccess('');
+
+
+        //password validation
+        if (password.length < 6) {
+            setRegisterError('Password is less then 6 Character');
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            setRegisterError('Password must contain at least one capital letter');
+            return;
+        }
+
+        if (!/[^a-zA-Z0-9]/.test(password)) {
+            setRegisterError('Password must contain at least one special character');
+            return;
+        }
+
+
+
+        createUser(email, password, photoURL, displayName)
+            .then(result => {
+                // console.log(result.user);
+                // setSuccess('register success')
+
+                setSuccess(<span className="alert alert-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>Registration Success !</span>
+                </span>);
+            })
+            .catch(error => {
+                console.error(error);
+                setRegisterError(error.message)
+            })
+    }
 
     return (
         <div className="hero min-h-screen bg-base-200">
