@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import FeaturedFoodsCard from "./FeaturedFoodsCard";
+import { Link } from "react-router-dom";
 
 
 const FeaturedFoods = () => {
     const [foods, setfoods] = useState([]);
+
 
     useEffect(() => {
         fetch('http://localhost:5000/featured-foods')
@@ -20,6 +22,12 @@ const FeaturedFoods = () => {
                         food={food}
                     ></FeaturedFoodsCard>)
                 }
+            </div>
+            <div className="text-center my-10">
+                <Link to="availablefoods">
+                    <button className="bg-[#3FCDA6] text-black btn rounded  hover:bg-ghost">Show All Food</button>
+                </Link>
+
             </div>
         </div>
 

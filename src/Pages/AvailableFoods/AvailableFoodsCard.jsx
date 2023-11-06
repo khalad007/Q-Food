@@ -1,11 +1,11 @@
 
 
-const FeaturedFoodsCard = ({ food }) => {
+const AvailableFoodsCard = ({allFood}) => {
+    const { foodName, foodImage, donator: { name, image }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = allFood;
 
-    const { _id, foodName, foodImage, donator: { name, image }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = food;
     return (
         <div className="card card-compact bg-base-100 shadow-xl my-8">
-            <figure><img className="h-56 w-full" src={foodImage} alt="Shoes" /></figure>
+            <figure><img className="h-48 w-full" src={foodImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{foodName}</h2>
                 {/* Donator name and image */}
@@ -28,4 +28,4 @@ const FeaturedFoodsCard = ({ food }) => {
     );
 };
 
-export default FeaturedFoodsCard;
+export default AvailableFoodsCard;
