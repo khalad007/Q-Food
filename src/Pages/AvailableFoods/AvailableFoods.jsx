@@ -4,7 +4,7 @@ import AvailableFoodsCard from "./AvailableFoodsCard";
 const AvailableFoods = () => {
     const [allFoods, setAllFoods] = useState([]);
     const [sortedFoods, setSortedFoods] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         fetch('http://localhost:5000/allfood')
@@ -25,7 +25,7 @@ const AvailableFoods = () => {
     // Handle search
     const handleSearch = e => {
         const search = e.target.value;
-        setSearchTerm(search);
+        setSearch(search);
 
         const filteredFoods = allFoods.filter(food => food.foodName.toLowerCase().includes(search.toLowerCase()));
         setSortedFoods(filteredFoods);
@@ -35,13 +35,15 @@ const AvailableFoods = () => {
         <div>
             <h1 className="text-center mt-14 text-5xl font-bold">Available <span className="text-[#3FCDA6]">Foods</span></h1>
             <div className="flex justify-end mt-4">
+                {/* search  */}
                 <input
                     type="text"
                     placeholder="Search by food name"
                     onChange={handleSearch}
-                    value={searchTerm}
+                    value={search}
                     className="border-2 border-gray-300 rounded-md p-2"
                 />
+                {/* sort  */}
                 <button
                     onClick={sortByExpirationDate}
                     className="bg-[#3FCDA6] text-white py-2 px-4 rounded-md ml-4 hover:bg-neutral"

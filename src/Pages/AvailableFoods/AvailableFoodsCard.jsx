@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
-const AvailableFoodsCard = ({allFood}) => {
-    const { foodName, foodImage, donator: { name, image }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = allFood;
+const AvailableFoodsCard = ({ allFood }) => {
+    const { _id, foodName, foodImage, donator: { name, image, email }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = allFood;
 
     return (
         <div className="card card-compact bg-base-100 shadow-xl my-8">
@@ -21,11 +22,15 @@ const AvailableFoodsCard = ({allFood}) => {
                 <p className="text-sm mt-2"><span className="font-bold">Expires on:</span> {new Date(expiredDateTime).toLocaleString()}</p>
                 {/* Additional Notes */}
                 <p className="text-sm mt-2"><span className="font-bold">Additional Notes:</span> {additionalNotes}</p>
-                <button className="bg-[#3FCDA6] text-white py-2 px-4 rounded mt-4 hover:bg-neutral">View Details</button>
-            </div>
 
+                <Link to={`/singleFoodDetails/${_id}`}>
+                    <button className="bg-[#3FCDA6] text-white py-2 px-4 rounded mt-4 hover:bg-neutral">View Details</button>
+                </Link>
+
+            </div>
         </div>
     );
 };
 
 export default AvailableFoodsCard;
+// availablefoods/singleFoodDetails/

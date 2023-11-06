@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const FeaturedFoodsCard = ({ food }) => {
@@ -21,11 +22,13 @@ const FeaturedFoodsCard = ({ food }) => {
                 <p className="text-sm mt-2"><span className="font-bold">Expires on:</span> {new Date(expiredDateTime).toLocaleString()}</p>
                 {/* Additional Notes */}
                 <p className="text-sm mt-2"><span className="font-bold">Additional Notes:</span> {additionalNotes}</p>
-                <button className="bg-[#3FCDA6] text-white py-2 px-4 rounded mt-4 hover:bg-neutral">View Details</button>
+                <Link to={`singleFoodDetails/${_id}`}>
+                    <button className="bg-[#3FCDA6] text-white py-2 px-4 rounded mt-4 hover:bg-neutral">View Details</button>
+                </Link>
             </div>
 
         </div>
     );
 };
 
-export default FeaturedFoodsCard;
+export default FeaturedFoodsCard; 
