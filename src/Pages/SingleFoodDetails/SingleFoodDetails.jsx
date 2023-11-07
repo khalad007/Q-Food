@@ -1,44 +1,57 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const SingleFoodDetails = () => {
 
+    const {user, metadata} = useContext(AuthContext);
+
+    console.log(user.email)
+    console.log(user.metadata.lastSignInTime)
+
     const food = useLoaderData();
 
-    const { _id, food_id, foodName, foodImage, donator: { name, image, email }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = food;
+    const { _id, foodName, foodImage, donator: { name, image, email }, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = food;
 
 
     const handleUpdateProduct = e => {
         e.preventDefault();
 
         const form = e.target;
-        const name = form.name.value;
-        const rating = form.rating.value;
-        const brandName = form.brandName.value;
-        const type = form.type.value;
-        const price = form.price.value;
-        const description = form.description.value;
-        const photoURL = form.photoURL.value;
+        const foodName = form.foodName.value;
+        const foodImage = form.foodImage.value;
+        const id = form.id.value;
+        const email = form.email.value;
+        const donatorName = form.donatorName.value;
+        const userEmail = form.userEmail.value;
+        const requestDate = form.requestDate.value;
+        const pickupLocation = form.pickupLocation.value;
+        const expiredDateTime = form.expiredDateTime.value;
+        const donation = form.donation.value;
+        const additionalNote = form.additionalNote.value;
 
-        // const newProduct = { name, rating, brandName, type, price, description, photoURL }
-
-        console.log(newProduct);
+        const reqFood = { foodName, foodImage, id, email, donatorName, userEmail, requestDate, pickupLocation,additionalNote, expiredDateTime, donation }
+        console.log(donation)
+        console.log(donation)
+        console.log(reqFood);
 
         //send data to the server
-        // fetch(`https://tenth-assignment-server-mv319buzq-abirs-projects-823d9b34.vercel.app/update/${_id}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newProduct)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.modifiedCount > 0) {
-        //             swal("Good job!", "Product Updated Successfully.!", "success");
-        //         }
-        //     })
+        //send data to the server
+        fetch('http://localhost:5000/reqfood', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reqFood)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    swal("Good job!", "New Product Added Successfully.!", "success");
+                }
+            })
     }
 
 
@@ -98,7 +111,7 @@ const SingleFoodDetails = () => {
                                             <span className="label-text">Food ID</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" disabled defaultValue={_id} name="rating" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue={_id} name="id" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                     <div className="form-control md:w-1/2">
@@ -110,7 +123,7 @@ const SingleFoodDetails = () => {
                                         </label>
                                     </div>
                                 </div>
-                                {/* food donator name & use email */}
+                                {/* food donator name & user email */}
                                 <div className="md:flex gap-2">
                                     <div className="form-control md:w-1/2">
                                         <label className="label">
@@ -125,7 +138,7 @@ const SingleFoodDetails = () => {
                                             <span className="label-text">User Email</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" disabled  name="userEmail" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue={user.email}   name="userEmail" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                 </div>
@@ -136,7 +149,7 @@ const SingleFoodDetails = () => {
                                             <span className="label-text">Request Date </span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" disabled name="requestDate" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue={user.metadata.lastSignInTime} name="requestDate" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                     <div className="form-control md:w-1/2">
@@ -144,7 +157,7 @@ const SingleFoodDetails = () => {
                                             <span className="label-text">Pickup Location</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" disabled defaultValue={email} name="email" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue={pickupLocation} name="pickupLocation" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                 </div>
