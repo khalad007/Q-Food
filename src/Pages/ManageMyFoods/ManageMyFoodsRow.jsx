@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ManageMyFoodsRow = ({ food , handleDelete}) => {
@@ -33,8 +34,9 @@ const ManageMyFoodsRow = ({ food , handleDelete}) => {
             <td><p><span className="font-bold">Expires on:</span> {new Date(expiredDateTime).toLocaleString()}</p></td>
             <td>{foodStatus}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">Edit</button>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <Link to={`/update/${_id}`}><button className="btn btn-ghost btn-xs">Edit</button></Link>
+                
+                <Link to="/details"><button className="btn btn-ghost btn-xs">details</button></Link>
             </th>
         </tr>
     );
