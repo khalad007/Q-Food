@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import FeaturedFoods from "../FeaturedFoods/FeaturedFoods";
 import Articles from "../Articles/Articles";
+import Donator from "../Donator/Donator";
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedFoods></FeaturedFoods>
             <Articles></Articles>
+            <Donator></Donator>
         </div>
     );
 };
