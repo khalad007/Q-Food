@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import FeaturedFoods from "../FeaturedFoods/FeaturedFoods";
+import Articles from "../Articles/Articles";
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <FeaturedFoods></FeaturedFoods>
+            <Articles></Articles>
         </div>
     );
 };
