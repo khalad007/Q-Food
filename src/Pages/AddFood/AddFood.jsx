@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
 
 
-    const {user, metadata} = useContext(AuthContext);
+    const { user, metadata } = useContext(AuthContext);
 
     console.log(user.email)
     console.log(user.displayName)
@@ -42,10 +43,10 @@ const AddFood = () => {
             name: name,
             image: image
         };
-    
+
         const allFood = { foodName, foodImage, foodQuantity, foodStatus, additionalNotes, expiredDateTime, pickupLocation, donator }
-    
-    
+
+
         console.log(allFood);
 
         //send data to the server
@@ -68,11 +69,16 @@ const AddFood = () => {
 
     return (
         <form onSubmit={handleAddFood}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Food</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
 
-{/* donator or user logged info */}
-<div>
-    <h1 className="font-bold text-5xl my-11 text-center">Add Your <span className="text-[#40D99E] ">Food</span></h1>
-</div>
+            {/* donator or user logged info */}
+            <div>
+                <h1 className="font-bold text-5xl my-11 text-center">Add Your <span className="text-[#40D99E] ">Food</span></h1>
+            </div>
 
             <div className="flex items-center justify-center">
                 <div className="card w-60 bg-base-100 shadow-xl">

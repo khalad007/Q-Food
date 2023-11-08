@@ -1,11 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const Update = ({ user }) => {
 
     const food = useLoaderData();
-    const { _id,pickupLocation, foodName, foodImage, foodQuantity,additionalNotes, expiredDateTime, foodStatus } = food;
+    const { _id, pickupLocation, foodName, foodImage, foodQuantity, additionalNotes, expiredDateTime, foodStatus } = food;
 
 
     const handleUpdateFood = e => {
@@ -54,11 +55,15 @@ const Update = ({ user }) => {
     return (
 
         <form onSubmit={handleUpdateFood}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
 
-  
-<div>
-    <h1 className='text-center text-5xl font-bold my-16'>Update Food</h1>
-</div>
+            <div>
+                <h1 className='text-center text-5xl font-bold my-16'>Update Food</h1>
+            </div>
 
 
             {/* form row name & img */}
@@ -131,7 +136,7 @@ const Update = ({ user }) => {
                         <span className="label-text">Food Status </span>
                     </label>
                     <label className="input-group">
-                        <input type="text" defaultValue="Available"  required name="foodStatus" className="input input-bordered w-full" />
+                        <input type="text" defaultValue="Available" required name="foodStatus" className="input input-bordered w-full" />
                     </label>
                 </div>
             </div>

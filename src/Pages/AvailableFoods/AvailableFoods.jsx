@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AvailableFoodsCard from "./AvailableFoodsCard";
+import { Helmet } from "react-helmet";
 
 const AvailableFoods = () => {
     const [allFoods, setAllFoods] = useState([]);
@@ -33,6 +34,11 @@ const AvailableFoods = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Available Food</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h1 className="text-center mt-14 text-5xl font-bold">Available <span className="text-[#3FCDA6]">Foods</span></h1>
             <div className="flex justify-end mt-4">
                 {/* search  */}

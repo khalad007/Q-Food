@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import ManageMyRequestSingle from "./ManageMyRequestSingle";
+import { Helmet } from "react-helmet";
 
 
 const ManageMyRequest = () => {
@@ -48,6 +49,11 @@ const ManageMyRequest = () => {
     }
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Manage My Request</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div>
                 <h1 className="text-5xl font-bold text-center my-12 ">My Requested <span className="text-[#40D99E] ">Foods</span></h1>
             </div>

@@ -5,6 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
 
@@ -60,6 +61,11 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Login</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left my-6">
@@ -96,7 +102,7 @@ const Login = () => {
                             </div>
                         </form>
                         {
-                            loginError && <p  className="text-center text-red-700 font-bold mt-3">{loginError}</p>
+                            loginError && <p className="text-center text-red-700 font-bold mt-3">{loginError}</p>
                         }
                         <p className="text-base font-semibold text-center py-10">Don't Have An Account ?
                             <Link className="text-[#F75B5F]" to="/register">Register</Link></p>

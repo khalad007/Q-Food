@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useReactTable } from '@tanstack/react-table'
 import ManageMyFoodsRow from "./ManageMyFoodsRow";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const ManageMyFoods = () => {
@@ -52,7 +53,11 @@ const ManageMyFoods = () => {
     return (
         <div className="overflow-x-auto">
 
-
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Manage My Food</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div>
                 <h1 className="text-center my-14 font-bold text-5xl">Manage My <span className="text-[#3FCDA6]">Foods</span></h1>
             </div>
@@ -81,8 +86,8 @@ const ManageMyFoods = () => {
 
             </table>
             <div>
-                
-            <h1 className="text-center my-14 font-bold text-5xl">Manage Ruquestor <span className="text-[#3FCDA6]">Foods</span></h1>
+
+                <h1 className="text-center my-14 font-bold text-5xl">Manage Ruquestor <span className="text-[#3FCDA6]">Foods</span></h1>
             </div>
             <div className="flex justify-center items-center">
 

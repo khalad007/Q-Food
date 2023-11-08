@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -83,6 +84,11 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Register</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left my-6">
                     <h1 className="text-5xl font-bold">Sign Up now!</h1>
