@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useReactTable } from '@tanstack/react-table'
 import ManageMyFoodsRow from "./ManageMyFoodsRow";
+import { Link } from "react-router-dom";
 
 
 const ManageMyFoods = () => {
@@ -17,16 +18,7 @@ const ManageMyFoods = () => {
     }, [])
 
     const handleDelete = id => {
-        // const proceed = confirm('Are you sure you want to delete ');
-        // if(proceed){
-        //     fetch(`http://localhost:5000/allfood/${id}`,{
-        //         method: 'DELETE'
-        //     })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //     })
-        // }
+
 
         swal({
             title: "Are you sure?",
@@ -59,6 +51,11 @@ const ManageMyFoods = () => {
 
     return (
         <div className="overflow-x-auto">
+
+
+            <div>
+                <h1 className="text-center my-14 font-bold text-5xl">Manage My <span className="text-[#3FCDA6]">Foods</span></h1>
+            </div>
             <table className="table">
                 {/* head */}
                 <thead>
@@ -81,7 +78,16 @@ const ManageMyFoods = () => {
                 </tbody>
 
 
+
             </table>
+            <div>
+                
+            <h1 className="text-center my-14 font-bold text-5xl">Manage Ruquestor <span className="text-[#3FCDA6]">Foods</span></h1>
+            </div>
+            <div className="flex justify-center items-center">
+
+                <Link to="/details"><button className="btn bg-[#3FCDA6] my-8">Manage</button></Link>
+            </div>
         </div>
     );
 };

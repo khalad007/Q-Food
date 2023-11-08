@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const SingleFoodDetails = () => {
 
-    const {user, metadata} = useContext(AuthContext);
+    const { user, metadata } = useContext(AuthContext);
 
     console.log(user.email)
     console.log(user.metadata.lastSignInTime)
@@ -25,13 +25,16 @@ const SingleFoodDetails = () => {
         const email = form.email.value;
         const donatorName = form.donatorName.value;
         const userEmail = form.userEmail.value;
+        const photoURL = form.photoURL.value;
+        const displayName = form.displayName.value;
         const requestDate = form.requestDate.value;
         const pickupLocation = form.pickupLocation.value;
         const expiredDateTime = form.expiredDateTime.value;
         const donation = form.donation.value;
         const additionalNote = form.additionalNote.value;
+        const foodStatus = form.foodStatus.value;
 
-        const reqFood = { foodName, foodImage, id, email, donatorName, userEmail, requestDate, pickupLocation,additionalNote, expiredDateTime, donation }
+        const reqFood = { foodName, foodImage, id, email, foodStatus, displayName, donatorName, photoURL, userEmail, requestDate, pickupLocation, additionalNote, expiredDateTime, donation }
         console.log(donation)
         console.log(donation)
         console.log(reqFood);
@@ -138,7 +141,7 @@ const SingleFoodDetails = () => {
                                             <span className="label-text">User Email</span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="text" disabled defaultValue={user.email}   name="userEmail" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue={user.email} name="userEmail" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                 </div>
@@ -173,20 +176,62 @@ const SingleFoodDetails = () => {
                                     </div>
                                     <div className="form-control md:w-1/2">
                                         <label className="label">
-                                            <span className="label-text">Donation</span>
+                                            <span className="label-text">Food Status </span>
                                         </label>
                                         <label className="input-group">
-                                            <input type="number"  name="donation" className="input input-bordered w-full" />
+                                            <input type="text" disabled defaultValue="Available" name="foodStatus" className="input input-bordered w-full" />
                                         </label>
                                     </div>
                                 </div>
-                                {/* addition note */}
-                                <label>
-                                    <span>Additional Note</span>
-                                </label>
-                                <label>
-                                    <input type="text" placeholder="Additional Note" name="additionalNote" className="input input-bordered w-full" />
-                                </label>
+
+
+
+
+
+
+
+
+                                <div className="md:flex gap-2">
+                                    {/* for photourl */}
+                                    <div className="form-control md:w-1/2">
+                                        <label className="label">
+                                            <span className="label-text">User Photo URL</span>
+                                        </label>
+                                        <label className="input-group">
+                                            <input type="text" disabled defaultValue={user.photoURL} name="photoURL" className="input input-bordered w-full" />
+                                        </label>
+                                    </div>
+                                    {/* user name */}
+                                    <div className="form-control md:w-1/2">
+                                        <label className="label">
+                                            <span>User Name</span>
+                                        </label>
+                                        <label className="input-group">
+                                            <input type="text" disabled defaultValue={user.displayName} name="displayName" className="input input-bordered w-full" />
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div className="md:flex gap-2">
+                                    {/* addition note */}
+                                    <div className="form-control md:w-1/2">
+                                        <label className="label">
+                                            <span>Additional Note</span>
+                                        </label>
+                                        <label className="input-group">
+                                            <input type="text" placeholder="Additional Note" name="additionalNote" className="input input-bordered w-full" />
+                                        </label>
+                                    </div>
+                                    <div className="form-control md:w-1/2">
+                                        <label className="label">
+                                            <span className="label-text">Donation</span>
+                                        </label>
+                                        <label className="input-group">
+                                            <input type="number" name="donation" className="input input-bordered w-full" />
+                                        </label>
+                                    </div>
+                                </div>
 
                                 <input type="submit" value="Request Confirm" className="btn btn-block bg-[#3FCDA6]  mt-7 text-white" />
                             </form>
