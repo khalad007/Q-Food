@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 const auth = getAuth(app)
 export const AuthContext = createContext(null);
@@ -48,8 +49,26 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('auth state', currentUser);
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail }
             setUser(currentUser);
             setLoading(false);
+
+            if (currentUser) {
+
+                axios.post('https://eleven-assignment-server-pink.vercel.app/jwt', loggedUser, { withCreadential: true })
+                    .then(res => {
+                        console.log('token', res.data)
+                    })
+            }
+            else {
+                axios.post('https://eleven-assignment-server-pink.vercel.app/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
         });
         return () => {
             unSubscribe();

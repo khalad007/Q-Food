@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allfood/${params.id}`)
+        loader: ({ params }) => fetch(`https://eleven-assignment-server-pink.vercel.app/allfood/${params.id}`)
       },
       {
         path: '/details',
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: '/singleFoodDetails/:id',
         element: <PrivateRoute><SingleFoodDetails></SingleFoodDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allfood/${params.id}`)
+        loader: ({ params }) => fetch(`https://eleven-assignment-server-pink.vercel.app/allfood/${params.id}`)
       },
       
 

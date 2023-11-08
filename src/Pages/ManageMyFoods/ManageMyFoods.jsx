@@ -11,9 +11,9 @@ const ManageMyFoods = () => {
     const { user } = useContext(AuthContext);
     const [userFoods, setUserFoods] = useState([])
 
-    const url = `http://localhost:5000/allfood?email=${user.email}`
+    const url = `https://eleven-assignment-server-pink.vercel.app/allfood?email=${user.email}`
     useEffect(() => {
-        fetch(url)
+        fetch(url, {credentials: 'include'})
             .then(res => res.json())
             .then(data => setUserFoods(data))
     }, [])
@@ -30,7 +30,7 @@ const ManageMyFoods = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/allfood/${id}`, {
+                    fetch(`https://eleven-assignment-server-pink.vercel.app/allfood/${id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -55,7 +55,7 @@ const ManageMyFoods = () => {
 
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Manage My Food</title>
+                <title>QFood | Manage My Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div>

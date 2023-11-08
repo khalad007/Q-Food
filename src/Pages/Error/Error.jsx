@@ -7,7 +7,7 @@ const Error = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Error</title>
+                <title>QFood | Error</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className="flex justify-center">

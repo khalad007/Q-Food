@@ -63,7 +63,7 @@ const Login = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Login</title>
+                <title>QFood | Login</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className="hero min-h-screen bg-base-200">

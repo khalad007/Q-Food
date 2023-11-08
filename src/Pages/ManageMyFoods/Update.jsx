@@ -36,7 +36,7 @@ const Update = ({ user }) => {
 
         //send data to the server
         //send data to the server
-        fetch(`http://localhost:5000/allFood/${_id}`, {
+        fetch(`https://eleven-assignment-server-pink.vercel.app/allFood/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const Update = ({ user }) => {
         <form onSubmit={handleUpdateFood}>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Update</title>
+                <title>QFood | Update</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
 

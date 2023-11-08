@@ -9,7 +9,7 @@ const ManageMyRequest = () => {
     const [requests, setRequest] = useState([])
 
 
-    const url = `http://localhost:5000/myRequest?userEmail=${user.userEmail}`
+    const url = `https://eleven-assignment-server-pink.vercel.app/myRequest?userEmail=${user.userEmail}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -28,7 +28,7 @@ const ManageMyRequest = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/cancel/${id}`, {
+                    fetch(`https://eleven-assignment-server-pink.vercel.app/cancel/${id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -51,7 +51,7 @@ const ManageMyRequest = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Manage My Request</title>
+                <title>QFood | Manage My Request</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div>

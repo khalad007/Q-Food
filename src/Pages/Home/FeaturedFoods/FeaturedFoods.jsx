@@ -8,7 +8,7 @@ const FeaturedFoods = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/featured-foods')
+        fetch('https://eleven-assignment-server-pink.vercel.app/featured-foods')
             .then(res => res.json())
             .then(data => setfoods(data))
     })

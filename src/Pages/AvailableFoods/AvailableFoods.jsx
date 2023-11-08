@@ -8,7 +8,7 @@ const AvailableFoods = () => {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        fetch('http://localhost:5000/allfood')
+        fetch('https://eleven-assignment-server-pink.vercel.app/allfood')
             .then(res => res.json())
             .then(data => {
                 setAllFoods(data);
@@ -36,7 +36,7 @@ const AvailableFoods = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Available Food</title>
+                <title>QFood | Available Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <h1 className="text-center mt-14 text-5xl font-bold">Available <span className="text-[#3FCDA6]">Foods</span></h1>

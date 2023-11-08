@@ -86,7 +86,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Register</title>
+                <title>QFood | Register</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className="hero-content flex-col ">

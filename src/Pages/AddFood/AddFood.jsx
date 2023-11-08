@@ -50,7 +50,7 @@ const AddFood = () => {
         console.log(allFood);
 
         //send data to the server
-        fetch('http://localhost:5000/allFood', {
+        fetch('https://eleven-assignment-server-pink.vercel.app/allFood', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,7 @@ const AddFood = () => {
         <form onSubmit={handleAddFood}>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Add Food</title>
+                <title>QFood | Add Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
 

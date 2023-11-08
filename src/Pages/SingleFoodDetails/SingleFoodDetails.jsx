@@ -42,7 +42,7 @@ const SingleFoodDetails = () => {
 
         //send data to the server
         //send data to the server
-        fetch('http://localhost:5000/reqfood', {
+        fetch('https://eleven-assignment-server-pink.vercel.app/reqfood', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -64,7 +64,7 @@ const SingleFoodDetails = () => {
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Single Food</title>
+                <title>QFood | Single Food</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">

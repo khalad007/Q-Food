@@ -9,7 +9,7 @@ const Details = () => {
 
     const [manageFoods, setManageFoods] = useState([])
 
-    const url = `http://localhost:5000/donatorManage?email=${user.email}`
+    const url = `https://eleven-assignment-server-pink.vercel.app/donatorManage?email=${user.email}`
 
     useEffect(() => {
         fetch(url)
@@ -19,7 +19,7 @@ const Details = () => {
 
 
     const handleRequestConfirm = id => {
-        fetch(`http://localhost:5000/reqConfirm/${id}`, {
+        fetch(`https://eleven-assignment-server-pink.vercel.app/reqConfirm/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const Details = () => {
         <div className="overflow-x-auto">
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Details </title>
+                <title>QFood | Details </title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div>
