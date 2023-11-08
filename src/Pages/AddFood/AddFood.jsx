@@ -70,6 +70,9 @@ const AddFood = () => {
         <form onSubmit={handleAddFood}>
 
 {/* donator or user logged info */}
+<div>
+    <h1 className="font-bold text-5xl my-11 text-center">Add Your <span className="text-[#40D99E] ">Food</span></h1>
+</div>
 
             <div className="flex items-center justify-center">
                 <div className="card w-60 bg-base-100 shadow-xl">

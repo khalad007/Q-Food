@@ -40,6 +40,9 @@ const handleRequestConfirm = id => {
 
     return (
         <div className="overflow-x-auto">
+            <div>
+                <h1 className='text-center text-5xl my-11 font-bold'>Manage Requestor <span className='text-[#40D99E]'>Food</span></h1>
+            </div>
         <table className="table">
             {/* head */}
             <thead>
