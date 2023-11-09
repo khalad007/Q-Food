@@ -9,7 +9,8 @@ const ManageMyRequest = () => {
     const [requests, setRequest] = useState([])
 
 
-    const url = `https://eleven-assignment-server-pink.vercel.app/myRequest?userEmail=${user.userEmail}`
+    const url = `https://eleven-assignment-server-pink.vercel.app/myRequest?email=${user?.email}`
+    // const url = `https://eleven-assignment-server-pink.vercel.app/myRequest?email=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
